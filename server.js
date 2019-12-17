@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 //vars
 var campgrounds = [
   {name:'samlmun creek',
-  image: 'https://pixabay.com/get/52e5d7414355ac14f6da8c7dda793f7f1636dfe2564c704c72297fdd9644c750_340.jpg'}
-,{name: 'rock mounten',
-image:'https://images.unsplash.com/photo-1510312305653-8ed496efae75?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'}
+  image: '/imgs/4522970.png'},
+  {name: 'rock mounten',
+  image:'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'}
 ];
 
 //Routes
