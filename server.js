@@ -1,7 +1,8 @@
 const express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
-  mongoose = require("mongoose");
+  mongoose = require("mongoose"),
+  Campground = require("./models/campground");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -12,15 +13,6 @@ mongoose.connect("mongodb://localhost:27017/yelpcamp_db", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-//create schema
-const campSchema = mongoose.Schema({
-  name: String,
-  image: String,
-  description: String
-});
-
-//add model
-const Campground = mongoose.model("Campground", campSchema);
 
 //create new campground
 // Campground.create({
