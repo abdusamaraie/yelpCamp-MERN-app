@@ -4,7 +4,13 @@ var mongoose = require("mongoose");
 const campSchema = mongoose.Schema({
   name: String,
   image: String,
-  description: String
+  description: String,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ]
 });
 
 //export model
