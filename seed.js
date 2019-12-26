@@ -7,22 +7,24 @@ var data = [
     name: "Cluds sky",
     image:
       "https://cdn.pixabay.com/photo/2014/11/27/18/36/tent-548022__340.jpg",
-    description: " night sky camp of the world"
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eligendi odio sapiente dolores aliquam ea placeat eum. Voluptas placeat minima architecto reprehenderit. Soluta, unde numquam. Earum ab laborum libero necessitatibus."
   },
   {
     name: "desert blue",
     image:
       "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201__340.jpg",
-    description: " sdfsdf bla bla sky camp of the world"
+    description:
+      " sdfsdf Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eligendi odio sapiente dolores aliquam ea placeat eum. Voluptas placeat minima architecto reprehenderit. Soluta, unde numquam. Earum ab laborum libero necessitatibus. bla sky camp of the world"
   },
   {
     name: "Green world",
     image:
       "https://cdn.pixabay.com/photo/2019/10/03/11/14/camp-4522970__340.jpg",
-    description: " sdfsdf bla bla sky camp of the world"
+    description:
+      " sdfsdf Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eligendi odio sapiente dolores aliquam ea placeat eum. Voluptas placeat minima architecto reprehenderit. Soluta, unde numquam. Earum ab laborum libero necessitatibus. bla sky camp of the world"
   }
 ];
-
 function seedDB() {
   Campground.remove({}, function(err) {
     if (err) {

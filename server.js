@@ -7,7 +7,7 @@ const express = require("express"),
   seedDB = require("./seed");
 
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //connect to database
@@ -16,7 +16,7 @@ mongoose.connect("mongodb://localhost:27017/yelpcamp_db", {
   useUnifiedTopology: true
 });
 
-//seedDB();
+seedDB();
 //create new campground
 // Campground.create({
 //   name: "Napolian hill",
