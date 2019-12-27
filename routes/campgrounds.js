@@ -23,7 +23,13 @@ router.post("/", isLoggedIn, (req, res) => {
   const name = req.body.name;
   const image = req.body.image;
   const desc = req.body.description;
-  const newCamp = { name: name, image: image, description: desc };
+  const auther = { id: req.user._id, username: req.user.username };
+  const newCamp = {
+    name: name,
+    image: image,
+    description: desc,
+    auther: auther
+  };
   //add to the array
   //campgrounds.push(newCamp);
   //create new campground and save to db
@@ -32,13 +38,13 @@ router.post("/", isLoggedIn, (req, res) => {
       console.log(err);
     } else {
       //rerdirect back to camps page
-      res.redirect("/campgrounds/camps"); //redirect to the get page
+      res.redirect("../camps"); //redirect to the get page
     }
   });
 });
 
 //NEW - show form to create new campground
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
   res.render("campgrounds/new");
 });
 
