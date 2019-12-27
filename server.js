@@ -5,6 +5,7 @@ const express = require("express"),
   passport = require("passport"),
   localStrategy = require("passport-local"),
   User = require("./models/user"),
+  methodOverride = require("method-override"),
   seedDB = require("./seed");
 
 // Requiring routes
@@ -15,6 +16,7 @@ var campgroundRoute = require("./routes/campgrounds"),
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 //connect to database
 mongoose.connect("mongodb://localhost:27017/yelpcamp_db", {
