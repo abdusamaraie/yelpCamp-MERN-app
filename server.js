@@ -43,7 +43,7 @@ app.use((req, res, next) => {
   next();
 });
 
-seedDB();
+//seedDB();
 //create new campground
 // Campground.create({
 //   name: "Napolian hill",

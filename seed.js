@@ -1,63 +1,83 @@
-var mongoose = require("mongoose"),
-  Campground = require("./models/campground");
-Comment = require("./models/comment");
+var mongoose = require("mongoose");
+var Campground = require("./models/campground");
+var Comment = require("./models/comment");
 
 var data = [
   {
-    name: "Cluds sky",
-    image:
-      "https://cdn.pixabay.com/photo/2014/11/27/18/36/tent-548022__340.jpg",
+    name: "Cloud's Rest",
+    image: "https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eligendi odio sapiente dolores aliquam ea placeat eum. Voluptas placeat minima architecto reprehenderit. Soluta, unde numquam. Earum ab laborum libero necessitatibus."
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    author: {
+      id: "588c2e092403d111454fff76",
+      username: "Jack"
+    }
   },
   {
-    name: "desert blue",
-    image:
-      "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201__340.jpg",
+    name: "Desert Mesa",
+    image: "https://farm6.staticflickr.com/5487/11519019346_f66401b6c1.jpg",
     description:
-      " sdfsdf Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eligendi odio sapiente dolores aliquam ea placeat eum. Voluptas placeat minima architecto reprehenderit. Soluta, unde numquam. Earum ab laborum libero necessitatibus. bla sky camp of the world"
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    author: {
+      id: "588c2e092403d111454fff71",
+      username: "Jill"
+    }
   },
   {
-    name: "Green world",
-    image:
-      "https://cdn.pixabay.com/photo/2019/10/03/11/14/camp-4522970__340.jpg",
+    name: "Canyon Floor",
+    image: "https://farm1.staticflickr.com/189/493046463_841a18169e.jpg",
     description:
-      " sdfsdf Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda eligendi odio sapiente dolores aliquam ea placeat eum. Voluptas placeat minima architecto reprehenderit. Soluta, unde numquam. Earum ab laborum libero necessitatibus. bla sky camp of the world"
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    author: {
+      id: "588c2e092403d111454fff77",
+      username: "Jane"
+    }
   }
 ];
+
 function seedDB() {
+  //Remove all campgrounds
   Campground.deleteMany({}, function(err) {
-    //   if (err) {
-    //     console.log(err);
-    //   } else {
-    //     console.log("data removed");
-    //     data.forEach(function(seed) {
-    //       Campground.create(seed, function(err, camp) {
-    //         if (err) {
-    //           console.log(err);
-    //         } else {
-    //           console.log("campground added");
-    //           Comment.create(
-    //             {
-    //               text: " this is a greate place to be a comment ",
-    //               auther: "Homer"
-    //             },
-    //             function(err, comment) {
-    //               if (err) {
-    //                 console.log(err);
-    //               } else {
-    //                 camp.comments.push(comment);
-    //                 camp.save();
-    //                 console.log("comments created");
-    //               }
-    //             }
-    //           );
-    //         }
-    //       });
-    //     });
-    //   }
+    if (err) {
+      console.log(err);
+    }
+    console.log("removed campgrounds!");
+    Comment.deleteMany({}, function(err) {
+      if (err) {
+        console.log(err);
+      }
+      console.log("removed comments!");
+      //add a few campgrounds
+      data.forEach(function(seed) {
+        Campground.create(seed, function(err, campground) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("added a campground");
+            //create a comment
+            Comment.create(
+              {
+                text: "This place is great, but I wish there was internet",
+                author: {
+                  id: "588c2e092403d111454fff76",
+                  username: "Jack"
+                }
+              },
+              function(err, comment) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  campground.comments.push(comment);
+                  campground.save();
+                  console.log("Created new comment");
+                }
+              }
+            );
+          }
+        });
+      });
+    });
   });
-  //add a few campgrounds
   //add a few comments
 }
 
