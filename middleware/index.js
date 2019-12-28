@@ -23,6 +23,7 @@ middlewareObj.checkCommentOwner = function checkCommentOwner(req, res, next) {
         if (foundComment.auther.id.equals(req.user.id)) {
           next();
         } else {
+          req.flash("error", "You can't Edit or Delete this comment");
           res.redirect("back");
         }
       }
@@ -42,12 +43,14 @@ middlewareObj.checkCampgroundOwner = function checkCampgroundOwner(
     //check if camp exist
     Campground.findById(req.params.id, (err, foundCamp) => {
       if (err) {
+        req.flash("error", "Campground not found");
         res.redirect("back");
       } else {
         // check if user ownes the camp
         if (foundCamp.auther.id.equals(req.user.id)) {
           next();
         } else {
+          req.flash("error", "You can't Edit or Delete this Campground");
           //redirect accurding to state
           res.redirect("back");
         }
