@@ -43,6 +43,7 @@ router.post(
 //logout route
 router.get("/logout", (req, res) => {
   req.logout();
+  req.flash("success", "You Logged Out");
   res.redirect("/");
 });
 

@@ -52,5 +52,17 @@
         </ul>
       </div>
     </nav>
+    <!-- flash alerts messeges -->
+    <div class="container my-4">
+      <% if(error && error.length >0){%>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+      <% }else if(success && success.length >0){%>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+      <%}%>
+    </div>
   </body>
 </html>

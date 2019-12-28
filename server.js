@@ -6,6 +6,7 @@ const express = require("express"),
   localStrategy = require("passport-local"),
   User = require("./models/user"),
   methodOverride = require("method-override"),
+  flash = require("connect-flash"),
   seedDB = require("./seed");
 
 // Requiring routes
@@ -38,8 +39,13 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// flash messeges
+app.use(flash());
+
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   next();
 });
 
