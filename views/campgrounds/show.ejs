@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 mb-4">
       <p class="lead">Yelpcamp</p>
       <div class="list-group">
         <li class="list-group-item active">info1</li>
@@ -58,6 +58,20 @@
             </div>
           </div>
           <p class="lead"><%= comment.text %></p>
+          <% if(currentUser && comment.auther.id.equals(currentUser._id)){ %>
+          <form
+            action="/camps/<%= campground._id%>/comments/<%=comment._id%>?_method=DELETE"
+            method="post"
+          >
+            <a
+              class="btn btn-sm btn-warning"
+              href="/camps/<%= campground._id%>/comments/<%=comment._id%>/edit"
+            >
+              Edit
+            </a>
+            <input type="submit" class="btn btn-sm btn-danger" value="Delete" />
+          </form>
+          <%}%>
           <hr />
           <% })%>
         </div>
