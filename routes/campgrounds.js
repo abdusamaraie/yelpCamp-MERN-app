@@ -24,11 +24,13 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
   const name = req.body.name;
   const image = req.body.image;
   const desc = req.body.description;
+  const price = req.body.price;
   const auther = { id: req.user._id, username: req.user.username };
   const newCamp = {
     name: name,
     image: image,
     description: desc,
+    price: price,
     auther: auther
   };
   //add to the array
