@@ -20,7 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 //connect to database
-mongoose.connect("mongodb://localhost:27017/yelpcamp_db", {
+var databaseURL =
+  process.env.DATABASEURL || "mongodb://localhost:27017/yelpcamp_db";
+mongoose.connect(databaseURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -62,6 +64,6 @@ app.use(indexRoute);
 app.use("/camps", campgroundRoute);
 app.use("/camps/:id/comments", commentRoute);
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000!");
+app.listen(process.env.PORT || 3000, process.env.IP, () => {
+  console.log("Server is running!");
 });
