@@ -20,10 +20,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 //connect to database
-mongoose.connect("mongodb://localhost:27017/yelpcamp_db", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+//"mongodb://localhost:27017/yelpcamp_db"
+mongoose.connect(
+  "mongodb+srv://admin:3fmZlxBj4RiXtNGk@yelpcamp-cg43c.mongodb.net/test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+);
 
 // Passport config
 app.use(
